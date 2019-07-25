@@ -1,0 +1,28 @@
+sudo pacman -S pacman-mirrors
+sudo pacman-mirrors --fasttrack && sudo pacman -Syyu
+sudo pacman -S appmenu-gtk-module libdbusmenu-glib appmenu-qt4 pamac
+pamac build lib32-libdbusmenu-qt libdbusmenu-qt4 
+
+•	update to Plasma 5.13 or higher
+•	install appmenu-gtk-module
+•	install libdbusmenu-glib for electron global menus
+•	check also if you have those packages, if not, install them:
+appmenu-qt4 (support for qt4 apps, if you don't use them, you don't need it)
+lib32-libdbusmenu-glib
+lib32-libdbusmenu-gtk2
+lib32-libdbusmenu-gtk3
+lib32-libdbusmenu-qt
+libdbusmenu-glib
+libdbusmenu-gtk2
+libdbusmenu-gtk3
+libdbusmenu-qt4
+libdbusmenu-qt5
+•	Libre Office since 6.2 has native support for Plasma global menus. For older LO versions you need to enable it (although is now a bit buggy - see info at the end) by adding to ~/.xprofile a line:
+export SAL_USE_VCLPLUGIN=gtk
+if ~/.xprofile doesn't already exist, create it and add this line.
+then reboot system.
+The section below is valid only for Arch based systems! Distros based on Ubuntu don't have to do it as Thunderbird and Firefox there is already with Unity patches for global menus.
+•	for Firefox global menus install from AUR firefox-kde-opensuse-bin (already compiled version, unpacked from deb) or compile yourself from AUR firefox-kde-opensuse (will take a long time, even 2 hours or more!)
+•	for Thunderbird global menus compile from AUR thunderbird-appmenu (compilation can take 1 hour or more), make temp folder should be set on root to avoid longer paths, which can break compilation (issue with Thunderbird's compilation)
+Warning: At the moment of writing Firefox's and Thunderbird's global menus work correctly with system global menu applet/widget and with titlebar. When you use AWC applet this is currently bugged and menus show up but don't respond to click. As a temporal workaround: click on the first menu item, move the cursor through menus, click on the FF or TB window anywhere to unfocus menus, switch to other window and then back to FF or TB. Menus will then work until program restart. Hopefully, this will be later fixed.
+
